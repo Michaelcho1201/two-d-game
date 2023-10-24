@@ -548,8 +548,20 @@ let sprite_bind_group_layout =
                             println!("SHOOTING");
                             // USING WAITING TO CHECK IF BULLET SHOT
                             gs.waiting = true;
-                            sprites[2].to_region = [cur_x, cur_y+bullet_speed, SPRITE_SIZE, SPRITE_SIZE];
-                            println!("{}", cur_y)
+                            while(gs.waiting && cur_y < WINDOW_HEIGHT){
+                            //not actually updating sprite position. 
+                            sprites[2].to_region = [cur_x, cur_y + 5.0, SPRITE_SIZE, SPRITE_SIZE];
+                            println!("{}", cur_y);
+                            
+                            let targetx: f32 = sprites[0].to_region[0];
+                            let targety: f32 = sprites[0].to_region[1];
+                            if (cur_x == targetx) & (cur_y == targety-1.0){
+                             gs.waiting= false; 
+                            
+                            }
+                            
+                        
+                        }
                         }
 
                         else {
